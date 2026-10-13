@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TIME-RICH, MIND-SHIFT</title>
+    <meta name="description" content="Your time is your most valuable resource. Learn to manage it consciously, build better habits, and turn your everyday actions into meaningful progress.">
+    <meta name="theme-color" content="#05070f">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="TIME-RICH, MIND-SHIFT">
+    <meta property="og:description" content="Your time is your most valuable resource. Learn to manage it consciously, build better habits, and turn your everyday actions into meaningful progress.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%234de2ff'/%3E%3Cstop offset='1' stop-color='%238b6bff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='32' height='32' rx='9' fill='%2305070f'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cpath d='M16 10v6l4 2' stroke='url(%23g)' stroke-width='2.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <script>document.documentElement.classList.add("js")</script>
+    <style>
+/* TIME-RICH, MIND-SHIFT — shared design system */
+:root{
+  --bg:#05070f; --bg2:#0a0f1f; --panel:rgba(16,24,48,.55); --panel2:rgba(22,32,62,.7);
+  --line:rgba(120,160,255,.16); --line2:rgba(120,200,255,.35);
+  --text:#e8eefc; --muted:#9fb0d3; --dim:#7283a8;
+  --cyan:#4de2ff; --blue:#4d8dff; --violet:#8b6bff; --mint:#5cffc4;
+  --grad:linear-gradient(120deg,#4de2ff,#4d8dff 50%,#8b6bff);
+  --radius:20px;
+  --font:"Space Grotesk","Cairo","Segoe UI",Tahoma,Arial,sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
+body{
+  font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.9;
+  min-height:100vh;display:flex;flex-direction:column;overflow-x:hidden;position:relative;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{ /* grid + glow background */
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(900px 500px at 85% -5%,rgba(77,141,255,.22),transparent 60%),
+    radial-gradient(700px 500px at 5% 35%,rgba(139,107,255,.14),transparent 60%),
+    radial-gradient(600px 400px at 70% 100%,rgba(77,226,255,.10),transparent 60%),
+    linear-gradient(var(--bg),var(--bg2));
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+  background-image:linear-gradient(rgba(120,160,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(120,160,255,.06) 1px,transparent 1px);
+  background-size:56px 56px;
+  -webkit-mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 75%);
+  mask-image:radial-gradient(ellipse at 50% 0%,#000 20%,transparent 75%);
+}
+::selection{background:rgba(77,226,255,.35)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:6px}
+.progress{position:fixed;top:0;left:0;height:3px;width:0;background:var(--grad);z-index:200;box-shadow:0 0 12px var(--cyan)}
+
+/* HEADER */
+.site-header{
+  position:sticky;top:0;z-index:100;direction:ltr;
+  display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:14px 6%;background:rgba(5,7,15,.72);
+  -webkit-backdrop-filter:blur(18px) saturate(1.4);backdrop-filter:blur(18px) saturate(1.4);
+  border-bottom:1px solid var(--line);
+}
+.brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:700;letter-spacing:.14em;font-size:14px;white-space:nowrap}
+.brand-mark{width:30px;height:30px;border-radius:9px;background:var(--grad);display:grid;place-items:center;box-shadow:0 0 22px rgba(77,141,255,.55)}
+.brand-mark svg{width:16px;height:16px}
+.site-nav{display:flex;gap:4px;flex-wrap:nowrap}
+.site-nav a{
+  text-decoration:none;font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--muted);
+  padding:8px 13px;border-radius:999px;border:1px solid transparent;transition:.25s;white-space:nowrap
+}
+.site-nav a:hover{color:#fff;background:rgba(77,141,255,.12)}
+.site-nav a.active{color:#fff;border-color:var(--line2);background:rgba(77,226,255,.10);box-shadow:0 0 18px rgba(77,226,255,.15)}
+.nav-toggle{display:none;background:transparent;border:1px solid var(--line2);color:#fff;width:42px;height:42px;border-radius:12px;cursor:pointer;font-size:20px;line-height:1}
+
+/* HERO (shared across pages) */
+.hero{
+  position:relative;text-align:center;padding:110px 7% 90px;overflow:hidden;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:430px;
+}
+.hero>*{max-width:100%;position:relative}
+.hero-content{width:100%}
+.hero::before{
+  content:"";position:absolute;width:560px;height:560px;border-radius:50%;
+  background:conic-gradient(from 0deg,rgba(77,226,255,.0),rgba(77,141,255,.35),rgba(139,107,255,.35),rgba(77,226,255,0));
+  filter:blur(70px);opacity:.55;top:50%;left:50%;transform:translate(-50%,-50%);animation:spin 22s linear infinite;z-index:-1
+}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.hero-content{max-width:880px;text-align:start}
+.step,.tag{
+  display:inline-block;direction:ltr;color:var(--cyan);font-size:12px;font-weight:600;letter-spacing:.28em;
+  padding:7px 18px;border:1px solid var(--line2);border-radius:999px;background:rgba(77,226,255,.07);margin-bottom:26px
+}
+.hero h1,h1{
+  direction:ltr;font-size:clamp(26px,7.4vw,78px);line-height:1.12;letter-spacing:-.02em;margin:0 0 24px;font-weight:700;overflow-wrap:anywhere;
+  background:linear-gradient(180deg,#fff,#b9ccf5);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+}
+.hero h1 span{background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{max-width:700px;margin:0 auto;color:var(--muted);font-size:clamp(15px,1.6vw,18px)}
+.hero-content p{margin:0 0 36px}
+.button,.next-button{
+  display:inline-block;text-decoration:none;border:0;cursor:pointer;font-family:inherit;font-weight:700;font-size:15px;
+  color:#041020;background:var(--grad);padding:14px 30px;border-radius:14px;transition:.3s;
+  box-shadow:0 10px 30px rgba(77,141,255,.35),inset 0 1px 0 rgba(255,255,255,.4)
+}
+.button:hover,.next-button:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(77,226,255,.45)}
+
+/* LAYOUT */
+main,.container{width:88%;max-width:980px;margin:70px auto;flex:1}
+.introduction{width:100%;padding:0}
+main:has(.introduction){max-width:1040px}
+.section-title,.section-label{text-align:center;margin-bottom:34px}
+.section-title span,.section-label{
+  display:block;direction:ltr;color:var(--cyan);font-size:12px;font-weight:600;letter-spacing:.3em;text-transform:uppercase
+}
+.section-label{margin-bottom:30px}
+.section-title h2{font-size:clamp(24px,3.4vw,36px);margin-top:10px;color:#fff;line-height:1.35}
+section{margin-bottom:46px}
+
+/* CARDS */
+.article-card,.intro-card,.tool-card,.audit-card,.reflection-card,.section{
+  position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+  padding:34px;margin-bottom:22px;
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  box-shadow:0 20px 50px rgba(0,0,0,.35),inset 0 1px 0 rgba(255,255,255,.05);transition:.35s
+}
+.article-card::before,.section::before{
+  content:"";position:absolute;inset-inline-start:0;top:26px;bottom:26px;width:3px;border-radius:3px;background:var(--grad);box-shadow:0 0 14px var(--cyan)
+}
+.article-card:hover,.section:hover{border-color:var(--line2);transform:translateY(-3px)}
+.intro-card{padding:46px;max-width:960px;margin-inline:auto}
+.article-card h3,.intro-card h3,.section h3{color:#fff;font-size:clamp(19px,2.2vw,23px);margin:0 0 12px;line-height:1.5}
+.intro-card h3{margin:30px 0 14px}
+.section h2{color:#fff;font-size:clamp(22px,3vw,29px);margin-bottom:16px;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;width:fit-content}
+.article-card p,.intro-card p,.section p{color:var(--muted);font-size:16px;margin-bottom:14px}
+.intro-card p{text-align:right}
+.article-card strong,.section strong{color:#fff}
+.arabic{direction:rtl;text-align:right}
+.arabic ul,.section ul{padding-inline-start:26px;color:var(--muted)}
+.arabic li{margin-bottom:10px}
+.arabic li::marker{color:var(--cyan)}
+span.highlight{color:var(--cyan);font-weight:700}
+div.highlight{
+  position:relative;text-align:center;margin:34px 0;padding:28px 30px;border-radius:var(--radius);
+  font-size:clamp(17px,2vw,20px);font-weight:600;color:#fff;line-height:1.8;
+  background:linear-gradient(135deg,rgba(77,141,255,.18),rgba(139,107,255,.16));
+  border:1px solid var(--line2);box-shadow:0 0 40px rgba(77,141,255,.15)
+}
+.intro-card .highlight{text-align:right;margin-bottom:0}
+
+/* FORMS & TOOLS */
+.tool-card h3,.audit-card h3,.reflection-card h3{color:#fff;font-size:24px;text-align:center;margin-bottom:10px}
+.reflection-card h3{text-align:start}
+.tool-description,.audit-description,.reflection-card>p{text-align:center;color:var(--muted);margin-bottom:28px}
+.reflection-card>p{text-align:start}
+.form-group{margin-bottom:20px}
+.form-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+label{display:block;margin-bottom:8px;font-weight:600;color:#dce6ff}
+input[type=text],input[type=number],input[type=date],select,textarea{
+  width:100%;padding:14px 16px;font:inherit;font-size:15px;color:#fff;background:rgba(5,9,22,.7);
+  border:1px solid var(--line);border-radius:12px;outline:none;transition:.25s;margin-top:6px;color-scheme:dark
+}
+input::placeholder,textarea::placeholder{color:var(--dim)}
+input:focus,select:focus,textarea:focus{border-color:var(--cyan);box-shadow:0 0 0 3px rgba(77,226,255,.15)}
+select option{background:#0a0f1f;color:#fff}
+textarea{min-height:110px;resize:vertical}
+.question{padding:18px;margin:16px 0;background:rgba(5,9,22,.45);border:1px solid var(--line);border-radius:14px;transition:.25s}
+.question:hover{border-color:var(--line2)}
+.question label{display:flex;align-items:flex-start;gap:12px;cursor:pointer;margin:0;font-weight:500;font-size:15px}
+.question label:has(input[type=checkbox]){color:var(--text)}
+.question input[type=checkbox]{
+  appearance:none;-webkit-appearance:none;margin-top:7px;width:20px;height:20px;flex-shrink:0;cursor:pointer;
+  border:1.5px solid var(--line2);border-radius:6px;background:rgba(5,9,22,.7);display:grid;place-content:center;transition:.2s
+}
+.question input[type=checkbox]::after{content:"";width:10px;height:10px;border-radius:2px;background:var(--grad);transform:scale(0);transition:.15s}
+.question input[type=checkbox]:checked{border-color:var(--cyan);box-shadow:0 0 12px rgba(77,226,255,.5)}
+.question input[type=checkbox]:checked::after{transform:scale(1)}
+.action-button,.calculate-button,.main-button{
+  display:block;width:100%;margin-top:22px;padding:16px;border:0;border-radius:14px;cursor:pointer;
+  font:inherit;font-size:16px;font-weight:700;color:#041020;background:var(--grad);transition:.3s;
+  box-shadow:0 10px 30px rgba(77,141,255,.3)
+}
+.action-button:hover,.calculate-button:hover,.main-button:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(77,226,255,.4)}
+.section form .button{margin-top:12px}
+.result-box,.results,.result{
+  display:none;margin-top:26px;padding:24px;border-radius:16px;
+  background:linear-gradient(135deg,rgba(77,226,255,.10),rgba(139,107,255,.10));border:1px solid var(--line2);
+  box-shadow:0 0 36px rgba(77,226,255,.10)
+}
+.results,.understand-result{text-align:center}
+.result-box h4,.results h3,.result h3{color:var(--cyan);margin-bottom:10px;font-size:19px}
+.result-box p,.results p,.result p{color:var(--text);font-size:16px;margin:8px 0}
+#planText{white-space:pre-line}
+.reflection{margin-top:30px;padding:26px;border-radius:16px;background:rgba(5,9,22,.55);border:1px solid var(--line)}
+.reflection h3{color:#fff;margin-bottom:10px;font-size:21px;text-align:start}
+.reflection p{color:var(--muted);margin-bottom:15px}
+.reflection textarea{margin-top:0}
+.reflection-card .result{text-align:center}
+
+/* NEXT STEP & PAGER */
+.next-step{
+  text-align:center;margin-top:48px;padding:44px 30px;border-radius:24px;
+  background:linear-gradient(135deg,rgba(77,141,255,.2),rgba(139,107,255,.18));border:1px solid var(--line2);
+  box-shadow:0 0 60px rgba(77,141,255,.15)
+}
+.next-step h3{font-size:clamp(20px,2.6vw,26px);margin-bottom:10px;color:#fff}
+.next-step p{color:var(--muted);margin-bottom:24px}
+.next{text-align:center;padding:30px 0}
+.pager{width:88%;max-width:980px;margin:0 auto 60px;display:grid;grid-template-columns:1fr 1fr;gap:16px;direction:ltr}
+.pager a{
+  display:block;text-decoration:none;padding:20px 24px;border-radius:18px;background:var(--panel);border:1px solid var(--line);transition:.3s;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+}
+.pager a:hover{border-color:var(--cyan);transform:translateY(-3px);box-shadow:0 14px 40px rgba(77,226,255,.15)}
+.pager small{display:block;color:var(--cyan);font-size:11px;letter-spacing:.24em;font-weight:600;margin-bottom:4px}
+.pager b{font-size:15px;letter-spacing:.02em}
+.pager .next-p{text-align:right;grid-column:2}
+.pager .prev-p{grid-column:1}
+
+/* HOME JOURNEY */
+.journey{width:88%;max-width:1040px;margin:0 auto 90px}
+.journey-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;direction:ltr}
+.j-card{
+  position:relative;display:flex;flex-direction:column;gap:12px;text-decoration:none;padding:26px 22px;border-radius:20px;overflow:hidden;
+  background:var(--panel);border:1px solid var(--line);transition:.35s;min-height:260px;
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px)
+}
+.j-card::after{content:"";position:absolute;inset:auto -30% -50% -30%;height:60%;background:radial-gradient(closest-side,rgba(77,141,255,.35),transparent);opacity:0;transition:.4s}
+.j-card:hover{transform:translateY(-6px);border-color:var(--cyan)}
+.j-card:hover::after{opacity:1}
+.j-num{font-size:44px;font-weight:700;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.j-step{font-size:11px;letter-spacing:.2em;color:var(--cyan);font-weight:600}
+.j-card h3{font-size:17px;line-height:1.35;letter-spacing:.01em;color:#fff}
+.j-card p{font-size:13.5px;line-height:1.7;color:var(--muted)}
+.j-card[dir=rtl]{direction:rtl;text-align:right}
+.j-card[dir=rtl] .j-num,.j-card[dir=rtl] .j-step,.j-card[dir=rtl] h3{direction:ltr;text-align:left}
+.j-card p{margin-top:auto}
+
+/* FOOTER */
+footer{
+  margin-top:auto;text-align:center;padding:34px 20px;color:var(--dim);font-size:13px;line-height:2;
+  border-top:1px solid var(--line);background:rgba(5,7,15,.7)
+}
+footer::before{content:"";display:block;width:60px;height:3px;margin:0 auto 16px;border-radius:3px;background:var(--grad)}
+
+/* REVEAL */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.js .reveal{opacity:1;transform:none}html{scroll-behavior:auto}}
+
+/* RESPONSIVE */
+@media (max-width:1000px){.journey-grid{grid-template-columns:repeat(2,1fr)}.site-nav a{padding:8px 10px;font-size:12px}}
+@media (max-width:860px){
+  .nav-toggle{display:block}
+  .site-nav{
+    position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:4px;padding:14px 6% 20px;
+    background:rgba(5,7,15,.96);border-bottom:1px solid var(--line);display:none
+  }
+  .site-nav.open{display:flex}
+  .site-nav a{padding:13px 16px;font-size:14px;border-radius:12px}
+}
+@media (max-width:650px){
+  .hero{padding:64px 6% 56px;min-height:0}
+  .step,.tag{letter-spacing:.16em;font-size:11px;padding:6px 14px;margin-bottom:20px}
+  .hero h1,h1{font-size:clamp(26px,8.2vw,44px)}
+  .hero p{font-size:15px}
+  main,.container{width:92%;margin:44px auto}
+  .article-card,.tool-card,.audit-card,.reflection-card,.section{padding:24px 20px}
+  .intro-card{padding:26px 20px}
+  .form-grid{grid-template-columns:1fr}
+  .journey-grid{grid-template-columns:1fr}
+  .j-card{min-height:0}
+  .pager{grid-template-columns:1fr}
+  .pager .next-p,.pager .prev-p{grid-column:1}
+  .brand{font-size:12px;letter-spacing:.08em}
+}
+@media print{
+  body::before,body::after,.site-header,.pager,.progress{display:none}
+  body{background:#fff;color:#000}
+  .section,.article-card{background:#fff;border:1px solid #999;box-shadow:none}
+  .section p,.section li,.result p,.result h3{color:#000}
+  .section h2{-webkit-text-fill-color:#000;color:#000}
+  .button{display:none}
+}
+
+/* single-file router */
+.page{display:none;flex:1;flex-direction:column}
+.page.active{display:flex}
+
+    </style>
+</head>
+<body>
+    <div class="progress" aria-hidden="true"></div>
+    <header class="site-header">
+        <a class="brand" href="#/home" aria-label="TIME-RICH, MIND-SHIFT">
+            <span class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#041020" stroke-width="2.6" stroke-linecap="round"><circle cx="12" cy="12" r="8"/><path d="M12 7v5l3 2"/></svg></span>
+            <span>TIME-RICH, MIND-SHIFT</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-label="Menu" aria-expanded="false">&#9776;</button>
+        <nav class="site-nav" aria-label="Main"><a href="#/home" data-route="home">Home</a><a href="#/time-audit" data-route="time-audit">Time Audit</a><a href="#/understand-yourself" data-route="understand-yourself">Understand Yourself</a><a href="#/beat-procrastination" data-route="beat-procrastination">Beat Procrastination</a><a href="#/discover-your-direction" data-route="discover-your-direction">Discover Your Direction</a></nav>
+    </header>
+
+<div class="page active" id="page-home" lang="en" dir="ltr" data-title="TIME-RICH, MIND-SHIFT">
+    
+    
+
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="tag">
+                THE SELF-UPGRADE PLAYBOOK
+            </div>
+            <h1>
+                TIME-RICH,<br>
+                <span>MIND-SHIFT.</span>
+            </h1>
+            <p>
+                Your time is your most valuable resource.
+                Learn to manage it consciously, build better habits,
+                and turn your everyday actions into meaningful progress.
+            </p>
+         <a href="#/time-audit" class="button">Start Your Journey →</a>
+        </div>
+    </header>
+    <section class="journey" aria-label="Playbook steps"><div class="journey-grid"><a class="j-card reveal" href="#/time-audit" dir="rtl"><span class="j-num">01</span><span class="j-step">STEP 01 · SELF-AWARENESS</span><h3>WHERE DOES YOUR TIME GO?</h3><p>اكتشف أين يذهب وقتك كل يوم، وافهم عاداتك، وابدأ في اتخاذ قرارات أفضل تساعدك على تحقيق أهدافك.</p></a><a class="j-card reveal" href="#/understand-yourself" dir="rtl"><span class="j-num">02</span><span class="j-step">STEP 02 · SELF-DISCOVERY</span><h3>UNDERSTAND YOURSELF</h3><p>افهم نفسك، واكتشف عاداتك، وتعرّف على نقاط قوتك والجوانب التي يمكنك تطويرها لتصبح نسخة أفضل من نفسك.</p></a><a class="j-card reveal" href="#/beat-procrastination" dir="rtl"><span class="j-num">03</span><span class="j-step">STEP 03 · FOCUS &amp; ACTION</span><h3>BEAT PROCRASTINATION</h3><p>تغلب على التشتت والتسويف، وتعلّم كيف تحول النوايا والأهداف إلى خطوات إنجاز واقعية وفعالة.</p></a><a class="j-card reveal" href="#/discover-your-direction"><span class="j-num">04</span><span class="j-step">STEP 04 — FIND YOUR PATH</span><h3>DISCOVER YOUR DIRECTION</h3><p>You cannot build a meaningful future without knowing what matters to you. Discover your priorities, define your goals, and take the first step toward the person you want to become.</p></a></div></section>
+    <!-- INTRODUCTION SECTION -->
+    <main>
+        <section class="introduction" id="introduction">
+            <div class="section-label">
+                INTRODUCTION
+            </div>
+            <div class="intro-card reveal">
+                <p dir="rtl">
+                    الوقت من أهم الموارد اللي يمتلكها الإنسان،
+                    لأنه مورد محدود لا يمكن استرجاعه بعد مروره.
+                    ومع ذلك، كتير مننا بيعدّي عليه يوم كامل من غير
+                    ما يحقق الحاجات اللي فعلًا تهمه، وبيوصل لنهاية
+                    اليوم وهو حاسس إنه كان مشغول، لكن مش بالضرورة
+                    يكون اتقدم خطوة حقيقية ناحية أهدافه.
+                </p>
+                <p dir="rtl">
+                    المشكلة مش دايمًا إننا معندناش وقت كفاية،
+                    لكن أحيانًا بتكون في الطريقة اللي بنستخدم بيها
+                    وقتنا، والأولويات اللي بنختارها، والعادات اللي
+                    بتتحكم في يومنا من غير ما ناخد بالنا.
+                    فممكن ساعات طويلة تضيع في التشتت وتأجيل المهام،
+                    بينما حاجات بسيطة ومهمة تفضل مستنية لوقت تاني.
+                </p>
+                <h3 dir="rtl">
+                    هل المشكلة في الوقت، ولا في طريقة استخدامه؟
+                </h3>
+                <p dir="rtl">
+                    تنظيم الوقت مش معناه إننا نحول يومنا لجدول
+                    مليان بالمهام، أو إننا نشتغل طول الوقت من غير
+                    راحة. المعنى الحقيقي هو إننا نتعلم نحدد أولوياتنا،
+                    ونفرق بين المهم والعاجل، ونخصص وقتًا للتعلم
+                    والتطوير الشخصي والراحة والعلاقات الإنسانية.
+                </p>
+                <p dir="rtl">
+                    ومن هنا بتبدأ رحلة تطوير الذات: إننا نفهم
+                    عاداتنا الحالية، ونكتشف مصادر التشتت، ونحدد
+                    أهدافًا واضحة، وبعدها نحول الأهداف دي لخطوات
+                    صغيرة نقدر نلتزم بيها ونراجع تقدمنا باستمرار.
+                    فالتغيير الحقيقي مش بيحصل في يوم واحد،
+                    لكنه نتيجة قرارات صغيرة بنكررها مع الوقت.
+                </p>
+                <h3 dir="rtl">
+                    من الوعي إلى التغيير
+                </h3>
+                <p dir="rtl">
+                    مشروع TIME-RICH, MIND-SHIFT: THE SELF-UPGRADE
+                    PLAYBOOK بيقدم رحلة عملية تساعدنا نبص لوقتنا
+                    وعاداتنا وأهدافنا بطريقة مختلفة. بدل ما يكون
+                    التركيز على إننا ننجز أكبر عدد من المهام،
+                    هنركز على إننا نختار المهام الصح، ونبني عادات
+                    أفضل، ونستخدم وقتنا بشكل يخدم حياتنا وتطورنا.
+                </p>
+                <div class="highlight reveal" dir="rtl">
+                    وقتك بيمر بالفعل، لكن السؤال الحقيقي هو:
+                    بتستثمره في إيه؟
+                </div>
+            </div>
+        </section>
+    </main>
+    <!-- FOOTER -->
+    <footer>
+        TIME-RICH, MIND-SHIFT: THE SELF-UPGRADE PLAYBOOK
+        <br>
+        Small changes. Better habits. A more intentional life.
+    </footer>
+</div>
+
+<div class="page" id="page-time-audit" lang="ar" dir="rtl" data-title="Where Does Your Time Go? | TIME-RICH, MIND-SHIFT">
+
+    
+    
+
+
+    <section class="hero">
+        <div class="step">STEP 01 · SELF-AWARENESS</div>
+
+        <h1>WHERE DOES YOUR TIME GO?</h1>
+
+        <p>
+            اكتشف أين يذهب وقتك كل يوم، وافهم عاداتك،
+            وابدأ في اتخاذ قرارات أفضل تساعدك على تحقيق أهدافك.
+        </p>
+    </section>
+
+    <main class="container">
+
+        <!-- الموضوع النظري -->
+
+        <section id="article">
+
+            <div class="section-title">
+                <span>TIME AWARENESS</span>
+                <h2>أين يذهب وقتك؟</h2>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>1. فهم قيمة الوقت</h3>
+
+                <p>
+                    يُعد الوقت من أهم الموارد التي يمتلكها الإنسان،
+                    فهو مورد لا يمكن استرجاعه أو تعويضه بعد مروره.
+                    وعلى الرغم من أن كل شخص يمتلك 24 ساعة يوميًا،
+                    فإن طريقة استخدام هذه الساعات تختلف من شخص لآخر
+                    وفقًا للأولويات والعادات والقرارات اليومية.
+                </p>
+
+                <p>
+                    فهناك من يستغل وقته في التعلم والعمل وتطوير نفسه،
+                    وهناك من تمر ساعات يومه دون أن يحقق ما كان يخطط له.
+                    لذلك، فإن إدارة الوقت لا تبدأ بوضع جدول مزدحم،
+                    بل تبدأ بفهم الطريقة التي نستخدم بها وقتنا بالفعل.
+                </p>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>2. كيف نفقد وقتنا دون أن نشعر؟</h3>
+
+                <p>
+                    لا يعني إهدار الوقت بالضرورة أن نقضي اليوم دون القيام
+                    بأي شيء. فقد يحدث ذلك عندما نقضي وقتًا طويلًا على
+                    وسائل التواصل الاجتماعي، أو نؤجل المهام المهمة،
+                    أو ننتقل من نشاط إلى آخر دون وجود هدف واضح.
+                </p>
+
+                <p>
+                    وقد تبدو هذه التصرفات بسيطة في البداية، لكنها عندما
+                    تتكرر يوميًا يمكن أن تقلل من قدرتنا على الإنجاز،
+                    وتزيد الشعور بالضغط، وتجعل تحقيق أهدافنا أكثر صعوبة.
+                </p>
+
+                <p>
+                    ومن المهم أن ندرك أن الراحة والترفيه ليسا إهدارًا للوقت
+                    في حد ذاتهما؛ فهما جزء طبيعي من الحياة. المشكلة تبدأ
+                    عندما تستهلك بعض الأنشطة وقتًا أكبر مما نريد،
+                    على حساب الدراسة أو العمل أو صحتنا أو أهدافنا الشخصية.
+                </p>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>3. الوعي بالوقت: الخطوة الأولى للتغيير</h3>
+
+                <p>
+                    الوعي بالوقت هو أن نعرف كيف نوزع ساعات يومنا بين
+                    الأنشطة المختلفة، وأن نلاحظ العادات التي تؤثر في
+                    قدرتنا على الإنجاز. فعندما نتابع استخدامنا للوقت،
+                    قد نكتشف أننا نقضي على الهاتف ساعات أكثر مما توقعنا،
+                    أو أننا لا نخصص وقتًا كافيًا للتعلم وتطوير مهاراتنا.
+                </p>
+
+                <p>
+                    يساعدنا هذا الوعي على رؤية يومنا بصورة أكثر وضوحًا،
+                    وفهم الفرق بين الوقت الذي نقضيه في أنشطة ضرورية،
+                    والوقت الذي يمكننا تنظيمه بطريقة أفضل.
+                    فقبل أن نحاول تغيير عاداتنا، علينا أولًا أن نفهمها.
+                </p>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>4. من الوعي إلى العمل</h3>
+
+                <p>
+                    بعد معرفة كيفية استخدام وقتنا، يمكننا البدء في إجراء
+                    تغييرات بسيطة وواقعية، مثل تحديد الأولويات، وتقليل
+                    المشتتات، وتخصيص وقت للمهام المهمة، ووضع جدول يومي
+                    يناسب قدراتنا ومسؤولياتنا.
+                </p>
+
+                <p>
+                    ولا يعني تحسين إدارة الوقت أن نملأ كل دقيقة بالعمل
+                    أو أن نمنع أنفسنا من الراحة. بل يعني أن نستخدم وقتنا
+                    بطريقة تتوافق مع أهدافنا وقيمنا، مع الحفاظ على
+                    التوازن بين المسؤوليات والراحة والحياة الشخصية.
+                </p>
+
+                <p>
+                    تذكّر أن التغيير الحقيقي لا يتطلب أن يصبح يومك مثاليًا
+                    من البداية؛ بل يتطلب أن تفهم عاداتك، وتتخذ قرارات
+                    واعية، وتستمر في تحسينها خطوة بعد خطوة.
+                </p>
+            </div>
+
+            <div class="highlight reveal">
+                افهم كيف تقضي وقتك اليوم، لتتمكن من استخدامه بصورة أفضل غدًا.
+            </div>
+
+        </section>
+
+        <!-- التطبيق العملي -->
+
+        <section id="time-audit">
+
+            <div class="section-title">
+                <span>PRACTICAL ACTIVITY</span>
+                <h2>اختبر كيف تقضي يومك</h2>
+            </div>
+
+            <div class="audit-card reveal">
+
+                <h3>MY DAILY TIME AUDIT</h3>
+
+                <p class="audit-description">
+                    اكتب عدد الساعات التي تقضيها يوميًا في كل نشاط،
+                    ثم اضغط على الزر لمعرفة كيفية توزيع وقتك.
+                </p>
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="sleep">النوم (بالساعات)</label>
+                        <input type="number" id="sleep" min="0" max="24"
+                               step="0.5" value="8">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="study">الدراسة أو العمل (بالساعات)</label>
+                        <input type="number" id="study" min="0" max="24"
+                               step="0.5" value="6">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="social">وسائل التواصل الاجتماعي (بالساعات)</label>
+                        <input type="number" id="social" min="0" max="24"
+                               step="0.5" value="3">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="responsibilities">المسؤوليات اليومية (بالساعات)</label>
+                        <input type="number" id="responsibilities"
+                               min="0" max="24" step="0.5" value="3">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="development">التعلم وتطوير الذات (بالساعات)</label>
+                        <input type="number" id="development" min="0"
+                               max="24" step="0.5" value="1">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rest">الراحة والأنشطة الاجتماعية (بالساعات)</label>
+                        <input type="number" id="rest" min="0" max="24"
+                               step="0.5" value="3">
+                    </div>
+
+                </div>
+
+                <button class="calculate-button" onclick="calculateTime()">
+                    احسب ساعات يومي
+                </button>
+
+                <div class="results" id="results" aria-live="polite">
+                    <h3>نتيجة تحليل وقتك</h3>
+
+                    <p id="totalHours"></p>
+                    <p id="remainingHours"></p>
+                    <p id="message"></p>
+                </div>
+
+                <div class="reflection">
+                    <h3>فكّر في عاداتك</h3>
+
+                    <p>
+                        إذا استطعت تغيير عادة واحدة لتحسين استخدامك لوقتك،
+                        فما العادة التي ستختارها؟ ولماذا؟
+                    </p>
+
+                    <textarea
+                        id="reflectionAnswer"
+                        placeholder="اكتب أفكارك هنا..."
+                    ></textarea>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <nav class="pager" aria-label="Page navigation"><a class="prev-p" href="#/home"><small>&larr; PREVIOUS</small><b>HOME</b></a><a class="next-p" href="#/understand-yourself"><small>NEXT &rarr;</small><b>UNDERSTAND YOURSELF</b></a></nav>
+
+    <footer>
+        TIME-RICH, MIND-SHIFT: THE SELF-UPGRADE PLAYBOOK
+        <br>
+        افهم وقتك، طوّر عاداتك، واصنع تقدمك.
+    </footer>
+
+    
+
+</div>
+
+<div class="page" id="page-understand-yourself" lang="ar" dir="rtl" data-title="Understand Yourself | TIME-RICH, MIND-SHIFT">
+
+    
+    
+
+
+
+    <section class="hero">
+
+        <div class="step">STEP 02 · SELF-DISCOVERY</div>
+
+        <h1>UNDERSTAND YOURSELF</h1>
+
+        <p>
+            افهم نفسك، واكتشف عاداتك، وتعرّف على نقاط قوتك
+            والجوانب التي يمكنك تطويرها لتصبح نسخة أفضل من نفسك.
+        </p>
+
+    </section>
+
+
+    <main class="container">
+
+        <!-- القسم الأول -->
+
+        <section>
+
+            <div class="section-title">
+                <span>SELF-AWARENESS</span>
+                <h2>1. أهمية فهم الذات</h2>
+            </div>
+
+            <div class="article-card reveal">
+
+                <h3>لماذا نحتاج إلى فهم أنفسنا؟</h3>
+
+                <p>
+                    يُعد فهم الذات خطوة أساسية نحو التطور الشخصي؛
+                    لأنه يساعدنا على معرفة ما نريده من الحياة،
+                    وما الذي يحفزنا على التقدم، وما العوامل التي
+                    تؤثر في قراراتنا وسلوكياتنا اليومية.
+                </p>
+
+                <p>
+                    عندما نفهم أنفسنا بصورة أفضل، نصبح أكثر قدرة
+                    على تحديد أهداف واقعية، واتخاذ قرارات مناسبة،
+                    والتعامل مع التحديات بطريقة أكثر وعيًا.
+                    كما يساعدنا ذلك على اكتشاف العادات التي تدعم
+                    نجاحنا والعادات التي تحتاج إلى تغيير.
+                </p>
+
+                <p>
+                    لا يعني فهم الذات أن نعرف كل شيء عن أنفسنا،
+                    بل أن نستمر في ملاحظة أفكارنا ومشاعرنا وتصرفاتنا،
+                    وأن نتعلم من تجاربنا بدلًا من تكرار الأخطاء
+                    دون محاولة فهم أسبابها.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- القسم الثاني -->
+
+        <section>
+
+            <div class="section-title">
+                <span>YOUR STRENGTHS</span>
+                <h2>2. اكتشف نقاط قوتك</h2>
+            </div>
+
+            <div class="article-card reveal">
+
+                <h3>ما الذي تجيده؟</h3>
+
+                <p>
+                    نقاط القوة هي المهارات والصفات التي تساعدنا
+                    على التعامل مع المواقف المختلفة وتحقيق أهدافنا.
+                    قد تكون القدرة على حل المشكلات، أو التواصل مع الآخرين،
+                    أو التفكير الإبداعي، أو التعلم بسرعة، أو الالتزام
+                    بالمسؤوليات.
+                </p>
+
+                <p>
+                    معرفة نقاط قوتك تساعدك على استخدامها بطريقة أفضل،
+                    واختيار أهداف تناسب قدراتك، وبناء ثقتك بنفسك
+                    على أساس واقعي. ويمكنك اكتشافها من خلال ملاحظة
+                    الأنشطة التي تتقنها، والمهام التي تتعلمها بسهولة،
+                    والتجارب التي نجحت فيها.
+                </p>
+
+                <p>
+                    تذكّر أن امتلاك نقاط قوة لا يعني أنك لا تحتاج
+                    إلى التعلم؛ بل يعني أن لديك أساسًا يمكنك البناء عليه
+                    لتطوير مهاراتك وتحسين أدائك.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- القسم الثالث -->
+
+        <section>
+
+            <div class="section-title">
+                <span>ROOM FOR IMPROVEMENT</span>
+                <h2>3. تعرّف على الجوانب التي تحتاج إلى تحسين</h2>
+            </div>
+
+            <div class="article-card reveal">
+
+                <h3>التطوير يبدأ بالصدق مع النفس</h3>
+
+                <p>
+                    لكل شخص جوانب يمكنه تطويرها. فقد يجد البعض صعوبة
+                    في الالتزام بالمواعيد، أو تنظيم المهام، أو مقاومة
+                    المشتتات، أو الاستمرار في العمل نحو هدف معين.
+                </p>
+
+                <p>
+                    الاعتراف بهذه الجوانب ليس دليلًا على الفشل،
+                    بل هو بداية التغيير. فبدلًا من لوم أنفسنا،
+                    يمكننا تحديد المشكلة وفهم أسبابها، ثم اختيار
+                    خطوة صغيرة تساعدنا على التحسن.
+                </p>
+
+                <p>
+                    على سبيل المثال، إذا كنت تؤجل مهامك باستمرار،
+                    يمكنك البدء بتقسيم المهمة الكبيرة إلى خطوات صغيرة،
+                    وتحديد وقت مناسب للبدء، وإبعاد الهاتف أثناء العمل.
+                    ومع تكرار هذه الخطوات، يصبح من الأسهل بناء سلوك أفضل.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- القسم الرابع -->
+
+        <section>
+
+            <div class="section-title">
+                <span>YOUR DAILY HABITS</span>
+                <h2>4. افهم عاداتك اليومية</h2>
+            </div>
+
+            <div class="article-card reveal">
+
+                <h3>عاداتك الصغيرة تصنع فرقًا</h3>
+
+                <p>
+                    تتكون حياتنا اليومية من مجموعة من العادات
+                    التي نكررها باستمرار. بعض هذه العادات يساعدنا
+                    على التعلم والإنجاز، بينما قد يستهلك بعضها الآخر
+                    وقتنا وطاقتنا دون أن نشعر.
+                </p>
+
+                <p>
+                    لفهم عاداتك، ابدأ بملاحظة ما تفعله خلال يومك:
+                    متى تكون أكثر تركيزًا؟ ما الذي يجعلك تؤجل مهامك؟
+                    ما الأنشطة التي تساعدك على الشعور بالإنجاز؟
+                    وما المشتتات التي تمنعك من إكمال ما بدأت؟
+                </p>
+
+                <p>
+                    عندما تلاحظ هذه الأنماط، يمكنك اتخاذ قرارات
+                    أكثر وعيًا. لا تحتاج إلى تغيير كل عاداتك مرة واحدة؛
+                    اختر عادة واحدة وابدأ بتحسينها تدريجيًا.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <div class="highlight reveal">
+            أنت لا تحتاج إلى أن تكون مثاليًا؛ أنت تحتاج إلى أن تفهم نفسك
+            وتعرف ما الخطوة التي يمكنك اتخاذها لتتحسن.
+        </div>
+
+
+        <!-- التقييم الذاتي -->
+
+        <section id="self-reflection">
+
+            <div class="section-title">
+                <span>SELF-REFLECTION</span>
+                <h2>5. اختبر مدى وعيك بنفسك</h2>
+            </div>
+
+            <div class="reflection-card reveal">
+
+                <h3>فكّر في عاداتك وطريقة تعاملك مع أهدافك</h3>
+
+                <p>
+                    اختر العبارات التي تصفك حاليًا.
+                    لا توجد إجابات صحيحة أو خاطئة؛ الهدف هو مساعدتك
+                    على فهم نفسك وتحديد ما تريد تحسينه.
+                </p>
+
+                <div class="question">
+                    <label>
+                        <input type="checkbox" class="self-check">
+                        أعرف نقاط القوة التي يمكنني الاعتماد عليها
+                        لتحقيق أهدافي.
+                    </label>
+                </div>
+
+                <div class="question">
+                    <label>
+                        <input type="checkbox" class="self-check">
+                        أستطيع تحديد العادات التي تضيع وقتي
+                        أو تقلل من تركيزي.
+                    </label>
+                </div>
+
+                <div class="question">
+                    <label>
+                        <input type="checkbox" class="self-check">
+                        أحاول فهم أسباب تأجيل المهام بدلًا من
+                        الاستمرار في تأجيلها دون تغيير.
+                    </label>
+                </div>
+
+                <div class="question">
+                    <label>
+                        <input type="checkbox" class="self-check">
+                        أتعلم من أخطائي وتجربتي السابقة.
+                    </label>
+                </div>
+
+                <div class="question">
+                    <label>
+                        <input type="checkbox" class="self-check">
+                        أخصص وقتًا لتطوير مهاراتي وتحسين نفسي.
+                    </label>
+                </div>
+
+                <div class="question">
+                    <label>
+                        <input type="checkbox" class="self-check">
+                        أستطيع تحديد هدف واضح أعمل على تحقيقه.
+                    </label>
+                </div>
+
+                <label for="myGoal">
+                    <strong>
+                        ما أهم جانب تريد تحسينه في نفسك خلال الفترة القادمة؟
+                    </strong>
+                </label>
+
+                <textarea
+                    id="myGoal"
+                    placeholder="اكتب هدفك هنا، ولماذا تريد تحقيقه..."
+                ></textarea>
+
+                <button
+                    type="button"
+                    class="main-button"
+                    onclick="evaluateSelf()"
+                >
+                    اعرض نتيجة التقييم
+                </button>
+
+                <div class="result" id="result" aria-live="polite">
+
+                    <h3 id="resultTitle"></h3>
+
+                    <p id="resultText"></p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- الانتقال للمرحلة التالية -->
+
+        <section class="next-step reveal">
+
+            <h3>الخطوة التالية: اكتشف اتجاهك</h3>
+
+            <p>
+                بعد أن تبدأ في فهم نفسك وعاداتك، حان الوقت لتحديد
+                ما تريد تحقيقه واختيار الاتجاه الذي ترغب في التقدم نحوه.
+            </p>
+
+            <a href="#/discover-your-direction" class="next-button">Discover Your Direction →</a>
+
+        </section>
+
+    </main>
+
+
+    <nav class="pager" aria-label="Page navigation"><a class="prev-p" href="#/time-audit"><small>&larr; PREVIOUS</small><b>WHERE DOES YOUR TIME GO?</b></a><a class="next-p" href="#/beat-procrastination"><small>NEXT &rarr;</small><b>BEAT PROCRASTINATION</b></a></nav>
+
+    <footer>
+
+        TIME-RICH, MIND-SHIFT: THE SELF-UPGRADE PLAYBOOK
+
+        <br>
+
+        افهم نفسك، واكتشف إمكاناتك، وابدأ رحلتك نحو التطور.
+
+    </footer>
+
+
+    
+
+</div>
+
+<div class="page" id="page-beat-procrastination" lang="ar" dir="rtl" data-title="Beat Procrastination &amp; Distractions | TIME-RICH, MIND-SHIFT">
+
+    
+    
+
+
+    <section class="hero">
+        <div class="step">STEP 03 · FOCUS & ACTION</div>
+        <h1>BEAT PROCRASTINATION</h1>
+        <p>
+            تغلب على التشتت والتسويف، وتعلّم كيف تحول النوايا والأهداف إلى خطوات إنجاز واقعية وفعالة.
+        </p>
+    </section>
+
+    <main class="container">
+
+        <!-- الجزء النظرى -->
+        <section id="article-beat">
+
+            <div class="section-title">
+                <span>FOCUS & PRODUCTIVITY</span>
+                <h2>التغلب على التسويف والمشتتات</h2>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>1. لماذا نسوف ونؤجل المهام؟</h3>
+                <p>
+                    التسويف ليس مجرد كسل أو سوء تنظيم للوقت، بل هو غالبًا محاولة للهروب من مشاعر عدم الراحة، مثل الخوف من الفشل، أو الشعور بأن المهمة ضخمة ومعقدة، أو عدم وجود هدف واضح من البداية.
+                </p>
+                <p>
+                    عندما نؤجل مهمة مهمة ونستبدلها بنشاط أسهل (مثل تصفح وسائل التواصل)، يشعر العقل براحة مؤقتة، لكن هذا الشعور سرعان ما يتحول إلى ضغط نفسي وتوتر مع اقتراب المواعيد النهائية.
+                </p>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>2. التحكم في المشتتات الرقمية</h3>
+                <p>
+                    في عالمنا اليوم، تُعد الإشعارات والتطبيقات المشتت الأكبر للتركيز. كل إشعار يلتقط انتباهك يحتاج عقلك بعده إلى عدة دقائق ليستعيد مستواه السابق من التركيز والعمق.
+                </p>
+                <p>
+                    الحل لا يكمن في إلغاء التكنولوجيا، بل في وضع حدود واضحة لها، مثل تفعيل وضع عدم الإزعاج أثناء فترة العمل، وإبعاد الهاتف عن مكان الدراسة.
+                </p>
+            </div>
+
+            <div class="article-card reveal">
+                <h3>3. استراتيجيات عملية للانجاز</h3>
+                <p>
+                    <strong>قاعدة الـ 5 دقائق:</strong> أخبر نفسك أنك ستعمل على المهمة لمدة 5 دقائق فقط. غالبًا ما يكون البدء هو الجزء الأصبح، وبمجرد أن تبدأ، يسهل عليك الاستمرار.
+                </p>
+                <p>
+                    <strong>تقسيم المهام:</strong> لا تضع في جدولك "إنهاء المشروع"، بل قسمه إلى خطوات صغيرة جداً (مثل: كتابة المقدمة، أو تجهيز العناوين الرئيسية).
+                </p>
+            </div>
+
+            <div class="highlight reveal">
+                التركيز لا يعني العمل طوال الوقت، بل حماية وقتك من المشتتات لتنجز في وقت أقل وبجودة أعلى.
+            </div>
+
+        </section>
+
+        <!-- التفاعل والتطبيق -->
+        <section id="focus-tool">
+
+            <div class="section-title">
+                <span>PRACTICAL TOOL</span>
+                <h2>مُحلل المشتتات وخطة التركيز</h2>
+            </div>
+
+            <div class="tool-card reveal">
+                <h3>تحديد المشتت الخفي</h3>
+                <p class="tool-description">
+                    حدد أكبر مشتت يواجهك حالياً، واكتشف الخطة المناسبة للتعامل معه والتغلب عليه.
+                </p>
+
+                <div class="form-group">
+                    <label for="distractor">ما هو أكبر مشتت يعطل إنجازك عادةً؟</label>
+                    <select id="distractor">
+                        <option value="">-- اختر المشتت الرئيسي --</option>
+                        <option value="phone">الإشعارات ووسائل التواصل الاجتماعي</option>
+                        <option value="overwhelmed">الشعور بأن المهمة كبيرة وصعبة جداً</option>
+                        <option value="perfectionism">البحث عن الكمالية والرغبة في جعل كل شيء مثالياً</option>
+                        <option value="fatigue">الإرهاق وقلة الطاقة والتركيز</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="actionCommitment">اكتب التزاماً صغيراً ستطبقه اليوم لتقليل هذا المشتت:</label>
+                    <textarea id="actionCommitment" placeholder="مثال: سأضع الهاتف في غرفة أخرى أثناء الدراسة لمدة ساعة..."></textarea>
+                </div>
+
+                <button class="action-button" onclick="analyzeDistraction()">تحليل الحل واظهار الخطة</button>
+
+                <div class="result-box" id="resultBox" aria-live="polite">
+                    <h4 id="planTitle">الخطة المقترحة:</h4>
+                    <p id="planText"></p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- الخطوة التالية -->
+        <section class="next-step reveal">
+            <h3>الخطوة التالية: اكتشف اتجاهك واصنع خطتك</h3>
+            <p>
+                بعد أن عرفت كيف تحمي وقتك وتتغلب على التشتت، حان الوقت لتحديد أهدافك واكتشف اتجاهك المستقبلي بوضوح.
+            </p>
+            <a href="#/discover-your-direction" class="next-button">اكتشف اتجاهك الآن ←</a>
+        </section>
+
+    </main>
+
+    <nav class="pager" aria-label="Page navigation"><a class="prev-p" href="#/understand-yourself"><small>&larr; PREVIOUS</small><b>UNDERSTAND YOURSELF</b></a><a class="next-p" href="#/discover-your-direction"><small>NEXT &rarr;</small><b>DISCOVER YOUR DIRECTION</b></a></nav>
+
+    <footer>
+        TIME-RICH, MIND-SHIFT: THE SELF-UPGRADE PLAYBOOK
+        <br>
+        افهم وقتك، تغلب على تشتتك، وصنع أثرك.
+    </footer>
+
+    
+</div>
+
+<div class="page" id="page-discover-your-direction" lang="en" dir="ltr" data-title="Discover Your Direction | TIME-RICH, MIND-SHIFT">
+
+    
+    
+
+
+    <section class="hero">
+        <div class="tag">STEP 04 — FIND YOUR PATH</div>
+
+        <h1>DISCOVER YOUR<br>DIRECTION</h1>
+
+        <p>
+            You cannot build a meaningful future without knowing what matters
+            to you. Discover your priorities, define your goals, and take the
+            first step toward the person you want to become.
+        </p>
+    </section>
+
+    <main class="container">
+
+        <section class="section arabic reveal">
+            <h2>اكتشف اتجاهك في الحياة</h2>
+
+            <p>
+                بعد ما بدأت تفهم وقتك وتتعرف على نفسك، جه الوقت إنك تسأل سؤالًا
+                مهمًا: أنا عايز أوصل لإيه؟
+            </p>
+
+            <p>
+                وجود أهداف واضحة بيساعدك تستخدم وقتك ومجهودك بطريقة أفضل.
+                مش لازم تكون عارف مستقبلك بالكامل، ومش مطلوب منك تحقق كل حاجة
+                مرة واحدة. المهم إنك تبدأ بخطوة صغيرة في اتجاه مناسب ليك.
+            </p>
+
+            <p>
+                <span class="highlight">الهدف مش إنك تعرف كل الإجابات،</span>
+                لكن إنك تبدأ تسأل الأسئلة الصح وتكتشف إيه اللي يستحق وقتك واهتمامك.
+            </p>
+        </section>
+
+        <section class="section arabic reveal">
+            <h2>١. حدد أولوياتك</h2>
+
+            <p>
+                الأولويات هي الحاجات اللي ليها أهمية حقيقية في حياتك، وبتستحق
+                إنك تخصص لها وقتًا ومجهودًا.
+            </p>
+
+            <ul>
+                <li>التعلم وتطوير المهارات.</li>
+                <li>الصحة الجسدية والنفسية.</li>
+                <li>العلاقات المهمة في حياتك.</li>
+                <li>الدراسة أو النجاح المهني.</li>
+                <li>الاستقلالية وتحقيق الأهداف الشخصية.</li>
+            </ul>
+
+            <p>
+                مش مطلوب منك تختار كل حاجة. فكر في أهم ثلاث أولويات عندك حاليًا،
+                وخلي قراراتك اليومية تساعدك تقرب منها.
+            </p>
+        </section>
+
+        <section class="section arabic reveal">
+            <h2>٢. حوّل أحلامك إلى أهداف</h2>
+
+            <p>
+                فيه فرق بين إنك تقول «أنا عايز أطور نفسي» وبين إنك تحدد
+                مهارة معينة هتتعلمها، والوقت اللي هتخصصه لها، والخطوة اللي هتبدأ بها.
+            </p>
+
+            <h3>الهدف الواضح لازم يكون:</h3>
+
+            <ul>
+                <li><strong>محدد:</strong> عارف إنت عايز تحقق إيه.</li>
+                <li><strong>قابل للقياس:</strong> تقدر تلاحظ تقدمك.</li>
+                <li><strong>واقعي:</strong> يناسب ظروفك وإمكانياتك.</li>
+                <li><strong>مرتبط بوقت:</strong> عندك موعد للمراجعة.</li>
+            </ul>
+
+            <p>
+                مثال: بدلًا من «هتعلم إنجليزي»، ممكن يكون هدفك:
+                «هتدرب على الإنجليزي لمدة 20 دقيقة يوميًا خلال الشهر القادم».
+            </p>
+        </section>
+
+        <section class="section arabic reveal">
+            <h2>٣. خطتك الشخصية</h2>
+
+            <p>
+                دلوقتي استخدم الأسئلة دي عشان تبدأ ترسم اتجاهك. مفيش إجابات
+                مثالية؛ اكتب إجابات حقيقية تناسبك إنت.
+            </p>
+
+            <form id="goalForm">
+
+                <div class="question">
+                    <label for="priority">
+                        إيه أهم حاجة عايز تركز عليها في حياتك حاليًا؟
+                    </label>
+
+                    <input
+                        type="text"
+                        id="priority"
+                        placeholder="مثال: الدراسة، التعلم، تطوير مهارة..."
+                        required
+                    >
+                </div>
+
+                <div class="question">
+                    <label for="goal">
+                        إيه هدف واحد نفسك تحققه خلال الشهر الجاي؟
+                    </label>
+
+                    <textarea
+                        id="goal"
+                        placeholder="اكتب هدفك هنا..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="reason">
+                        ليه الهدف ده مهم بالنسبة لك؟
+                    </label>
+
+                    <textarea
+                        id="reason"
+                        placeholder="إيه اللي هيخليك مهتم إنك تحققه؟"
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="firstStep">
+                        إيه أول خطوة صغيرة تقدر تبدأ بها؟
+                    </label>
+
+                    <textarea
+                        id="firstStep"
+                        placeholder="حدد خطوة تقدر تعملها فعلًا..."
+                        required
+                    ></textarea>
+                </div>
+
+                <div class="question">
+                    <label for="deadline">
+                        إمتى هتراجع تقدمك؟
+                    </label>
+
+                    <input type="date" id="deadline" required>
+                </div>
+
+                <button type="submit" class="button">
+                    Create My Action Plan →
+                </button>
+
+            </form>
+
+            <div class="result" id="discoverResult">
+                <h3>خطتك بدأت تتشكل! 🎯</h3>
+
+                <p>
+                    <strong>أولويتك:</strong>
+                    <span id="showPriority"></span>
+                </p>
+
+                <p>
+                    <strong>هدفك:</strong>
+                    <span id="showGoal"></span>
+                </p>
+
+                <p>
+                    <strong>سبب اختيارك:</strong>
+                    <span id="showReason"></span>
+                </p>
+
+                <p>
+                    <strong>أول خطوة:</strong>
+                    <span id="showStep"></span>
+                </p>
+
+                <p>
+                    <strong>موعد مراجعة تقدمك:</strong>
+                    <span id="showDeadline"></span>
+                </p>
+
+                <p>
+                    افتكر إن التقدم مش محتاج خطوات ضخمة؛ محتاج خطوات صغيرة
+                    تستمر عليها.
+                </p>
+
+                <button type="button" class="button" onclick="window.print()">
+                    Print My Plan
+                </button>
+            </div>
+        </section>
+
+        <section class="section arabic reveal">
+            <h2>٤. الاستمرار أهم من الكمال</h2>
+
+            <p>
+                ممكن تقابل أيام تحس فيها إنك مش بتتقدم، أو تكتشف إن هدفك محتاج
+                تعديل. ده طبيعي، ومش معناه إنك فشلت.
+            </p>
+
+            <p>
+                راجع أهدافك من وقت للتاني، وشوف إيه اللي نفع معاك وإيه اللي محتاج
+                تغيير. المرونة مش معناها إنك تتخلى عن هدفك؛ معناها إنك تتعلم
+                وتختار طريقة أفضل للوصول له.
+            </p>
+
+            <p>
+                <span class="highlight">
+                    مستقبلك بيتشكل من القرارات الصغيرة اللي بتاخدها باستمرار.
+                </span>
+            </p>
+        </section>
+
+        <div class="next">
+            <a href="#/understand-yourself" class="button">
+                ← Back to Understand Yourself
+            </a>
+        </div>
+
+    </main>
+
+    <nav class="pager" aria-label="Page navigation"><a class="prev-p" href="#/beat-procrastination"><small>&larr; PREVIOUS</small><b>BEAT PROCRASTINATION</b></a></nav>
+
+    <footer>
+        TIME-RICH, MIND-SHIFT: THE SELF-UPGRADE PLAYBOOK
+        <br>
+        Small Steps. Clear Goals. Meaningful Growth.
+    </footer>
+
+    
+
+</div>
+
+
+    <script>
+
+        function calculateTime() {
+
+            const fields = [
+                { id: "sleep", name: "النوم" },
+                { id: "study", name: "الدراسة أو العمل" },
+                { id: "social", name: "وسائل التواصل الاجتماعي" },
+                { id: "responsibilities", name: "المسؤوليات اليومية" },
+                { id: "development", name: "تطوير الذات" },
+                { id: "rest", name: "الراحة والأنشطة الاجتماعية" }
+            ];
+
+            let total = 0;
+
+            for (let field of fields) {
+
+                const input = document.getElementById(field.id);
+                const value = input.value.trim();
+
+                if (
+                    value === "" ||
+                    !Number.isFinite(Number(value)) ||
+                    Number(value) < 0 ||
+                    Number(value) > 24
+                ) {
+                    alert("من فضلك أدخل عدد ساعات صحيحًا من 0 إلى 24 في خانة " + field.name);
+                    input.focus();
+                    return;
+                }
+
+                total += Number(value);
+            }
+
+            const results = document.getElementById("results");
+            const totalHours = document.getElementById("totalHours");
+            const remainingHours = document.getElementById("remainingHours");
+            const message = document.getElementById("message");
+
+            results.style.display = "block";
+
+            totalHours.textContent =
+                "إجمالي الساعات التي أدخلتها: " + total + " ساعة.";
+
+            if (total > 24) {
+
+                remainingHours.textContent =
+                    "مجموع الساعات أكبر من 24 ساعة.";
+
+                message.textContent =
+                    "راجع الساعات التي أدخلتها؛ فقد تكون بعض الأنشطة متداخلة أو تم حسابها أكثر من مرة.";
+
+            } else {
+
+                const remaining = 24 - total;
+
+                remainingHours.textContent =
+                    "الساعات غير الموزعة: " + remaining + " ساعة.";
+
+                if (remaining === 0) {
+
+                    message.textContent =
+                        "لقد وزعت ساعات يومك بالكامل. راجع ما إذا كان توزيع الوقت يعكس أولوياتك فعلًا.";
+
+                } else {
+
+                    message.textContent =
+                        "لديك " + remaining +
+                        " ساعة غير موزعة. فكّر في كيفية استخدامها بما يناسب احتياجاتك وأهدافك.";
+                }
+            }
+
+            results.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
+    
+
+
+        function evaluateSelf() {
+
+            const checkboxes = document.querySelectorAll(".self-check");
+
+            let score = 0;
+
+            checkboxes.forEach(function (checkbox) {
+                if (checkbox.checked) {
+                    score++;
+                }
+            });
+
+            const result = document.getElementById("discoverResult");
+            const resultTitle = document.getElementById("resultTitle");
+            const resultText = document.getElementById("resultText");
+
+            result.style.display = "block";
+
+            if (score <= 2) {
+
+                resultTitle.textContent = "ابدأ رحلة اكتشاف نفسك";
+
+                resultText.textContent =
+                    "قد تكون هذه فرصة جيدة لتلاحظ عاداتك وأهدافك بصورة أوضح. " +
+                    "ابدأ بتحديد نقطة قوة واحدة وعادة واحدة ترغب في تحسينها.";
+
+            } else if (score <= 4) {
+
+                resultTitle.textContent = "أنت تبني وعيك بنفسك";
+
+                resultText.textContent =
+                    "لديك بعض العادات الجيدة التي يمكنك البناء عليها. " +
+                    "حاول تحديد جانب واحد يحتاج إلى تطوير، " +
+                    "وضع خطة بسيطة للعمل عليه.";
+
+            } else {
+
+                resultTitle.textContent = "واصل تطوير وعيك بنفسك";
+
+                resultText.textContent =
+                    "تشير إجاباتك إلى أنك تلاحظ عدة جوانب مهمة في حياتك. " +
+                    "حافظ على هذه المراجعة، وتذكر أن الوعي الحقيقي يظهر " +
+                    "في القرارات والأفعال اليومية.";
+
+            }
+
+            result.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+
+        }
+
+    
+
+        function analyzeDistraction() {
+            const distractor = document.getElementById("distractor").value;
+            const commitment = document.getElementById("actionCommitment").value.trim();
+            const resultBox = document.getElementById("resultBox");
+            const planTitle = document.getElementById("planTitle");
+            const planText = document.getElementById("planText");
+
+            if (!distractor) {
+                alert("من فضلك اختر المشتت الرئيسي أولاً.");
+                return;
+            }
+
+            resultBox.style.display = "block";
+
+            let strategy = "";
+
+            if (distractor === "phone") {
+                planTitle.textContent = "استراتيجية تقليل المشتتات الرقمية:";
+                strategy = "جرب استراتيجية 'بيئة العمل النظيفة'. قم بتفعيل وضع عدم الإزعاج، ضع الهاتف بعيداً عن مجال رؤيتك، واستخدم تقنية البومودورو (25 دقيقة تركيز كامل يليه 5 دقائق راحة).";
+            } else if (distractor === "overwhelmed") {
+                planTitle.textContent = "استراتيجية التفكيك والتقسيم:";
+                strategy = "المهمة الكبيرة تسبب شللاً للتفكير. اختر أصغر جزء ممكن لا يستغرق أكثر من 5 دقائق وابدأ به فوراً دون التفكير في بقية المهمة الآن.";
+            } else if (distractor === "perfectionism") {
+                planTitle.textContent = "استراتيجية 'الإنجاز أفضل من الكمال':";
+                strategy = "تذكر أن النسخة الأولى المكتملة أفضل بكثير من النسخة المثالية التي لم تكتمل أبداً. ابدأ بالتسودة الأولى وأصلحها لاحقاً.";
+            } else if (distractor === "fatigue") {
+                planTitle.textContent = "استراتيجية إدارة الطاقة:";
+                strategy = "التسويف هنا ناتج عن نفاد الطاقة وليس الكسل. خذ استراحة قصيرة، اشرب ماء، أو اخرج للمشي دقائق، ثم استأنف العمل عندما يستعيد عقلك نشاطه.";
+            }
+
+            if (commitment) {
+strategy += "\n\nالتزامك الشخصي: \"" + commitment + "\" هو بداية ممتازة لترجمة هذه الخطط إلى واقع!";            }
+
+            planText.textContent = strategy;
+
+            resultBox.scrollIntoView({
+                behavior: "smooth",
+                block: "nearest"
+            });
+        }
+    
+
+        const goalForm = document.getElementById("goalForm");
+
+        goalForm.addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            document.getElementById("showPriority").textContent =
+                document.getElementById("priority").value;
+
+            document.getElementById("showGoal").textContent =
+                document.getElementById("goal").value;
+
+            document.getElementById("showReason").textContent =
+                document.getElementById("reason").value;
+
+            document.getElementById("showStep").textContent =
+                document.getElementById("firstStep").value;
+
+            const deadline =
+                document.getElementById("deadline").value;
+
+            document.getElementById("showDeadline").textContent =
+                deadline;
+
+            document.getElementById("discoverResult").style.display = "block";
+
+            document.getElementById("discoverResult").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        });
+    
+
+    </script>
+    <script>
+(function () {
+  var d = document;
+  // mobile nav
+  var t = d.querySelector('.nav-toggle'), n = d.querySelector('.site-nav');
+  if (t && n) {
+    t.addEventListener('click', function () {
+      var o = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', o ? 'true' : 'false');
+    });
+    n.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A') { n.classList.remove('open'); t.setAttribute('aria-expanded', 'false'); }
+    });
+  }
+  // scroll progress
+  var bar = d.querySelector('.progress');
+  if (bar) {
+    var tick = false;
+    var upd = function () {
+      var h = d.documentElement.scrollHeight - window.innerHeight;
+      bar.style.width = (h > 0 ? Math.min(100, window.scrollY / h * 100) : 0) + '%';
+      tick = false;
+    };
+    window.addEventListener('scroll', function () { if (!tick) { tick = true; requestAnimationFrame(upd); } }, { passive: true });
+    upd();
+  }
+  // reveal on scroll
+  var items = d.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(function (el) { el.classList.add('in'); });
+  }
+})();
+
+    </script>
+    <script>
+
+(function(){
+  var pages=[].slice.call(document.querySelectorAll('.page')),
+      links=[].slice.call(document.querySelectorAll('.site-nav a'));
+  function route(){
+    var h=(location.hash||'').replace(/^#\/?/,'')||'home';
+    var el=document.getElementById('page-'+h);
+    if(!el){h='home';el=document.getElementById('page-home');}
+    pages.forEach(function(p){p.classList.toggle('active',p===el);});
+    links.forEach(function(a){
+      var on=a.getAttribute('data-route')===h;
+      a.classList.toggle('active',on);
+      if(on){a.setAttribute('aria-current','page');}else{a.removeAttribute('aria-current');}
+    });
+    document.title=el.getAttribute('data-title');
+    window.scrollTo(0,0);
+  }
+  window.addEventListener('hashchange',route);
+  route();
+})();
+
+    </script>
+</body>
+</html>
